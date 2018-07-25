@@ -11,15 +11,14 @@ public class HitController : MonoBehaviour {
     public Text WoodText;
     public int Hp;
     public string type; // Тип дерева
- //   private Color32 red = new Color32(1,0,0,1);
-//    private Color32 none = new Color32(1, 1, 1, 1);
+    public Animation hitTreeAnim;
 
     public static System.Random rnd = new System.Random();//создаем объект класса рандом из библиотек sistem т.к. у юнити он всосный
     private int typeNumber;// номет типа дерева 
 
     // Use this for initialization
     void Start () {
-        
+        hitTreeAnim = GetComponent<Animation>();
         GetComponent<CapsuleCollider2D>().enabled = false;// убираем коллайдер при спавне, чтобы нельзя было бить правое дерео
         typeNumber = rnd.Next(1, 4);// рандомим номер типа дерева
         switch (typeNumber)// обрабатываем то, что натворил рандом
@@ -71,8 +70,7 @@ public class HitController : MonoBehaviour {
     {
         Hp -= 10;
 
- //       GetComponent<SpriteRenderer>().color = red;
- //       GetComponent<SpriteRenderer>().color = none;
+        hitTreeAnim.Play("Animatoins/onHitTree.anim");
 
         if (Hp == 0)// ХЭПЭ равно нулю- фактическая смерть
         {
