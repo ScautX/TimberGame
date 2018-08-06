@@ -9,6 +9,7 @@ public class GameCntr : MonoBehaviour {
     public bool isDead = false;// говорим, что все живы здоровы 
     public int Wood = 0;
     public int moveSpeed;
+    public GameObject desParticle;
 
     // Use this for initialization
     void Start () {
@@ -17,7 +18,7 @@ public class GameCntr : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (isDead) desParticle.GetComponent<ParticleSystem>().Play();
 
 	}
 }

@@ -7,21 +7,18 @@ public class HitController : MonoBehaviour {
 
     public GameCntr GameCntr;// связь с скриптом GameCntr
     public GameObject stump;//  префаб пня. Нужен, чтобы спавнить его при смерти дерева
-    public Text HpText;
-    public Text WoodText;
-    public int Hp;
-    public string type; // Тип дерева
-    public Animation hitTreeAnim;
+//    public string type; // Тип дерева
+//    public Animation hitTreeAnim;
 
-    public static System.Random rnd = new System.Random();//создаем объект класса рандом из библиотек sistem т.к. у юнити он всосный
-    private int typeNumber;// номет типа дерева 
+ //   public static System.Random rnd = new System.Random();//создаем объект класса рандом из библиотек sistem т.к. у юнити он всосный
+ //   private int typeNumber;// номет типа дерева 
 
     // Use this for initialization
     void Start () {
-        hitTreeAnim = GetComponent<Animation>();
+ //       hitTreeAnim = GetComponent<Animation>();
         GetComponent<CapsuleCollider2D>().enabled = false;// убираем коллайдер при спавне, чтобы нельзя было бить правое дерео
-        typeNumber = rnd.Next(1, 4);// рандомим номер типа дерева
-        switch (typeNumber)// обрабатываем то, что натворил рандом
+ //       typeNumber = rnd.Next(1, 4);// рандомим номер типа дерева
+ /*       switch (typeNumber)// обрабатываем то, что натворил рандом
         {
             case 1://Oak
                 type = "Oak";
@@ -45,7 +42,7 @@ public class HitController : MonoBehaviour {
                 break;
 
         }
-
+*/
     }
 	
 	// Update is called once per frame
@@ -59,48 +56,49 @@ public class HitController : MonoBehaviour {
        if (transform.position.x < 0)// когда правое дерево встает в центр (условно становится среднем/текущем/main )
         {
             transform.position = new Vector3(0,0,0);//кидаем его в центр сцены
-            transform.Translate(Vector2.zero);//говорим ему не двигаться (на всякий)
+//            transform.Translate(Vector2.zero);//говорим ему не двигаться (на всякий)
             GetComponent<CapsuleCollider2D>().enabled = true;// включаем коллайдер, чтобы его можно было рубить 
             GameCntr.isDead = false;// сообщаем, что main дерево живо
         }
 		
 	}
 
-    void OnMouseDown()// метод обрабатывает клик по коллайдеру дерева
-    {
-        Hp -= 10;
+    /*  void OnMouseDown()// метод обрабатывает клик по коллайдеру дерева
+      {
+          //       Hp -= 10;
 
-        hitTreeAnim.Play("Animatoins/onHitTree.anim");
+                 hitTreeAnim.Play("onHitTree.anim");
 
-        if (Hp == 0)// ХЭПЭ равно нулю- фактическая смерть
-        {
-            switch (typeNumber)
-            {
-                case 1:
-                    GameCntr.Wood += 15;// добавляем дерево
-                    break;
-                case 2:
-                    GameCntr.Wood += 10;// добавляем дерево
-                    break;
-                case 3:
-                    GameCntr.Wood += 8;// добавляем дерево
-                    break;
-            }
+                 if (Hp == 0)// ХЭПЭ равно нулю- фактическая смерть
+                 {
+                     switch (typeNumber)
+                     {
+                         case 1:
+                             GameCntr.Wood += 15;// добавляем дерево
+                             break;
+                         case 2:
+                             GameCntr.Wood += 10;// добавляем дерево
+                             break;
+                         case 3:
+                             GameCntr.Wood += 8;// добавляем дерево
+                             break;
+                     }
 
-            GameCntr.Wood += 10;// добавляем дерево
+                     GameCntr.Wood += 10;// добавляем дерево
 
-            Instantiate(this.gameObject, new Vector3(12, 0, 0), Quaternion.identity);//спавним новое правое дерево
+                     Instantiate(this.gameObject, new Vector3(12, 0, 0), Quaternion.identity);//спавним новое правое дерево
 
-            Instantiate(stump,new Vector3(0,0,0), Quaternion.identity); //спавним пень в центре сцены
+                     Instantiate(stump,new Vector3(0,0,0), Quaternion.identity); //спавним пень в центре сцены
 
-            GameCntr.isDead = true;//говорим, что main дерево мертво
+                     GameCntr.isDead = true;//говорим, что main дерево мертво
 
-            Destroy(this.gameObject);//уничтожаем себя (main дерево)
-        }
+                     Destroy(this.gameObject);//уничтожаем себя (main дерево)
+                 }
 
-        HpText.text = "HP: " + Hp;
-        WoodText.text = "Wood: " + GameCntr.Wood;
+                 HpText.text = "HP: " + Hp;
+                 WoodText.text = "Wood: " + GameCntr.Wood;
 
 
-    }
+             }
+             */
 }

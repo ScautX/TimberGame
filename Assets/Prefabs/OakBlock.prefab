@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TreeCntr: {fileID: 0}
-  Hp: 3
+  destroyParticle: {fileID: 1431157254692222, guid: ec8688cf49b8b714f80c2fee13b53f97,
+    type: 2}
 --- !u!212 &212459418449302278
 SpriteRenderer:
   m_ObjectHideFlags: 1
