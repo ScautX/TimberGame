@@ -84,10 +84,7 @@ public class TreeCntr : MonoBehaviour {
             if (actualBlock == quantityBlocks)
             {
 
-                foreach (GameObject block in blocksArr)
-                {
-                    Destroy(block);
-                }
+                
 
                 Instantiate(this.gameObject, new Vector3(12, -4, 0), Quaternion.identity);//спавним новое правое дерево
 
@@ -97,7 +94,10 @@ public class TreeCntr : MonoBehaviour {
 
                 Destroy(this.gameObject);//уничтожаем себя (main дерево)
 
-                /*   */
+                /* foreach (GameObject block in blocksArr)
+                {
+                    Destroy(block);
+                }  */
 
                 /*    for (int i = 0; i < blocksArr.Length; i++)
                     {
