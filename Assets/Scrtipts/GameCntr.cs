@@ -10,15 +10,18 @@ public class GameCntr : MonoBehaviour {
     public int Wood = 0;
     public int moveSpeed;
     public GameObject desParticle;
-
+    private ParticleSystem PS;
     // Use this for initialization
     void Start () {
-        firstTree.GetComponent<CapsuleCollider2D>().enabled = true;//включаем первому дерево коллайдер 
+        firstTree.GetComponent<CapsuleCollider2D>().enabled = true;//включаем первому дерево коллайдер
+        PS = desParticle.GetComponent<ParticleSystem>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (isDead) desParticle.GetComponent<ParticleSystem>().Play();
 
-	}
+    // Update is called once per frame
+
+    public void OnDead()
+    {
+        
+        desParticle.GetComponent<ParticleSystem>().Play();
+    }
 }

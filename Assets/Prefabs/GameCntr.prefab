@@ -56,3 +56,5 @@ MonoBehaviour:
   isDead: 0
   Wood: 460
   moveSpeed: 10
+  desParticle: {fileID: 1413849098685930, guid: c04ac81ad976c964bbd83d8b728c5142,
+    type: 2}
