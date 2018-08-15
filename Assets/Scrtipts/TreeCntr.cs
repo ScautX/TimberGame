@@ -17,13 +17,14 @@ public class TreeCntr : MonoBehaviour {
     public GameObject Crone;
     public GameObject Roots;
     public int hp=2;
-  //  public GameObject desParticle;
+ //   public GameObject deathParticle;
     public Animation hitTreeAnim;
     public GameCntr GameCntr;// связь с скриптом GameCntr
     public GameObject stump;//кидаем сюда пень
     public GameObject tree;//префаб дерева
     private Transform thisTransform;//для кеширования transform
  //   private ParticleSystem PS;
+   
     // Use this for initialization
 
     private void Awake()
@@ -40,13 +41,9 @@ public class TreeCntr : MonoBehaviour {
         
         
         GetComponent<CapsuleCollider2D>().enabled = false;// убираем коллайдер при спавне, чтобы нельзя было бить правое дерео
-       
-        
+               
         quantityBlocks = Random.Range(1, 10) + 2;// задаем случайное число, отвечающее за количество блоков
         blocksArr = new GameObject[quantityBlocks];// инициализируем массив блоков 
-
-        
-
 
         blocksArr[0] = Instantiate(Roots, new Vector3(thisTransform.position.x, thisTransform.position.y + position), Quaternion.identity);//создаем корни
         blocksArr[0].transform.parent = thisTransform;// делаем дерево родителем корней, чтобы менять позицию корней вместе с позицией дерева 
@@ -94,7 +91,10 @@ public class TreeCntr : MonoBehaviour {
 
         if (hp == 0)
         {
-            GameCntr.OnDead();
+            GameCntr.OnDeath();
+
+            
+
             Destroy(blocksArr[actualBlock]);
             actualBlock++;
             hp = 2;
@@ -107,7 +107,7 @@ public class TreeCntr : MonoBehaviour {
                 foreach (GameObject block in blocksArr)
                 {
                     Destroy(block);
-                }                                                 //////////Делаем эту херню, чтобы оно не спавнило по несколько лишних крон
+                }                                                 //////////Делаем эту херню, чтобы оно не спавнило по несколько лишних крон и корней
 
                 thisTransform.DetachChildren();
 
