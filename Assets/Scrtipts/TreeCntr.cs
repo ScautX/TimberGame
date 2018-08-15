@@ -3,34 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeCntr : MonoBehaviour {
-
-   // public bool isBroken = false;//флаг, отвечающий за состояние актуального блока  
+ 
     private GameObject[] blocksArr;// массив блоков
 
     private List<GameObject> blockList;
- //   private bool isBroked = false;
     private int quantityBlocks;//число блоков 
     private int actualBlock = 1;// актуальный блок
- //   private Random rnd = new Random();
     private float position = 0f;
     public GameObject Block;
     public GameObject Crone;
     public GameObject Roots;
     public int hp=2;
- //   public GameObject deathParticle;
     public Animation hitTreeAnim;
     public GameCntr GameCntr;// связь с скриптом GameCntr
     public GameObject stump;//кидаем сюда пень
     public GameObject tree;//префаб дерева
     private Transform thisTransform;//для кеширования transform
- //   private ParticleSystem PS;
-   
+    public GameObject backGround;
+    private Animation bGAnim;
     // Use this for initialization
 
     private void Awake()
     {
         hitTreeAnim = GetComponent<Animation>();//кешируем анимацию
         thisTransform = this.GetComponent<Transform>();//кешируем
+        bGAnim = backGround.GetComponent<Animation>();
+        bGAnim.Stop();
     }
 
 
@@ -76,6 +74,7 @@ public class TreeCntr : MonoBehaviour {
 
         if (transform.position.x < 0)// когда правое дерево встает в центр (условно становится среднем/текущем/main )
         {
+            bGAnim.Stop();
             thisTransform.position = new Vector3(0, -4, 0);//кидаем его в центр сцены
             GetComponent<CapsuleCollider2D>().enabled = true;// включаем коллайдер, чтобы его можно было рубить 
             GameCntr.isDead = false;// сообщаем, что main дерево живо
@@ -93,7 +92,7 @@ public class TreeCntr : MonoBehaviour {
         {
             GameCntr.OnDeath();
 
-            
+            bGAnim.Play();
 
             Destroy(blocksArr[actualBlock]);
             actualBlock++;

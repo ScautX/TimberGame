@@ -92,3 +92,4 @@ MonoBehaviour:
   GameCntr: {fileID: 114196596371880694, guid: e133e946912497e4dac42aa0722cc442, type: 2}
   stump: {fileID: 1717065248351956, guid: cd9a60f4da3310c4ab877ffbc0beaa6f, type: 2}
   tree: {fileID: 1925832474267906}
+  backGround: {fileID: 1736628799338708, guid: 2f5d1159bcb30dc479ca9915b2ba9210, type: 2}
