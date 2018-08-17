@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeCntr : MonoBehaviour {
- 
-    private GameObject[] blocksArr;// массив блоков
 
+   // public bool canBGMove = false;
+    private GameObject[] blocksArr;// массив блоков
+    public BGCntr bGCntr;
     private List<GameObject> blockList;
     private int quantityBlocks;//число блоков 
     private int actualBlock = 1;// актуальный блок
@@ -19,25 +20,20 @@ public class TreeCntr : MonoBehaviour {
     public GameObject stump;//кидаем сюда пень
     public GameObject tree;//префаб дерева
     private Transform thisTransform;//для кеширования transform
-    public GameObject backGround;
-    private Animation bGAnim;
+    
     // Use this for initialization
 
     private void Awake()
     {
         hitTreeAnim = GetComponent<Animation>();//кешируем анимацию
         thisTransform = this.GetComponent<Transform>();//кешируем
-        bGAnim = backGround.GetComponent<Animation>();
-        bGAnim.Stop();
+        //canBGMove = false;
+        
     }
 
 
     void Start () {
-
-        
-
-        
-        
+   
         GetComponent<CapsuleCollider2D>().enabled = false;// убираем коллайдер при спавне, чтобы нельзя было бить правое дерео
                
         quantityBlocks = Random.Range(1, 10) + 2;// задаем случайное число, отвечающее за количество блоков
@@ -74,7 +70,12 @@ public class TreeCntr : MonoBehaviour {
 
         if (transform.position.x < 0)// когда правое дерево встает в центр (условно становится среднем/текущем/main )
         {
-            bGAnim.Stop();
+            //bGCntr.canIMove = false;
+            GameCntr.canBGMove = false;
+           // GetComponent<BGCntr>().canIMove = false;
+           // bGCntr.SetCanIMove(false);
+
+
             thisTransform.position = new Vector3(0, -4, 0);//кидаем его в центр сцены
             GetComponent<CapsuleCollider2D>().enabled = true;// включаем коллайдер, чтобы его можно было рубить 
             GameCntr.isDead = false;// сообщаем, что main дерево живо
@@ -92,8 +93,6 @@ public class TreeCntr : MonoBehaviour {
         {
             GameCntr.OnDeath();
 
-            bGAnim.Play();
-
             Destroy(blocksArr[actualBlock]);
             actualBlock++;
             hp = 2;
@@ -102,6 +101,12 @@ public class TreeCntr : MonoBehaviour {
 
             if (actualBlock == quantityBlocks)
             {
+
+                //bGCntr.canIMove = true; // запускаем анимацию BG
+
+                // bGCntr.SetCanIMove(true);
+                GameCntr.canBGMove = true;
+               // GetComponent<BGCntr>().canIMove = true;
 
                 foreach (GameObject block in blocksArr)
                 {
@@ -130,12 +135,4 @@ public class TreeCntr : MonoBehaviour {
 
         }
     }
-
-    private void OnDestroy()
-    {
-        
-    }
-
-
-
 }

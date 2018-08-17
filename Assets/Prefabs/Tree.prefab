@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dc2b4d32b5031479097a22ce4d743b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bGCntr: {fileID: 114135928420415560, guid: 368f795de3f9e6a4ba81c71fa73fb75a, type: 2}
   Block: {fileID: 1846057537419882, guid: d383f96c7bdaa4641ae4381c8b062082, type: 2}
   Crone: {fileID: 1883377455083472, guid: 1837b769df0134b4397da757652c7e71, type: 2}
   Roots: {fileID: 1353771199653816, guid: 722dd1e0407e5db44a6c88ffaa36e160, type: 2}
@@ -92,4 +93,3 @@ MonoBehaviour:
   GameCntr: {fileID: 114196596371880694, guid: e133e946912497e4dac42aa0722cc442, type: 2}
   stump: {fileID: 1717065248351956, guid: cd9a60f4da3310c4ab877ffbc0beaa6f, type: 2}
   tree: {fileID: 1925832474267906}
-  backGround: {fileID: 1736628799338708, guid: 2f5d1159bcb30dc479ca9915b2ba9210, type: 2}
