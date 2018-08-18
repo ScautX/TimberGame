@@ -70,12 +70,7 @@ public class TreeCntr : MonoBehaviour {
 
         if (transform.position.x < 0)// когда правое дерево встает в центр (условно становится среднем/текущем/main )
         {
-            //bGCntr.canIMove = false;
             GameCntr.canBGMove = false;
-           // GetComponent<BGCntr>().canIMove = false;
-           // bGCntr.SetCanIMove(false);
-
-
             thisTransform.position = new Vector3(0, -4, 0);//кидаем его в центр сцены
             GetComponent<CapsuleCollider2D>().enabled = true;// включаем коллайдер, чтобы его можно было рубить 
             GameCntr.isDead = false;// сообщаем, что main дерево живо

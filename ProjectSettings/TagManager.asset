@@ -38,12 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 3887653191
+  - name: BG 0
+    uniqueID: 2306011243
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: 'BG 1 '
+    uniqueID: 357518001
+    locked: 0
+  - name: BG 2
+    uniqueID: 1766058677
+    locked: 0
+  - name: BG 3
+    uniqueID: 3887653191
     locked: 0
   - name: Tumbler
     uniqueID: 807629705
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
